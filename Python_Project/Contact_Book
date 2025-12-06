@@ -1,0 +1,48 @@
+contacts = {}
+
+def add_contact(name, number):
+    # Validation: digits + 10 length
+    if not number.isdigit():
+        print("Number must contain digits only.")
+        return
+    if len(number) != 10:
+        print("Number must be exactly 10 digits.")
+        return
+
+    contacts[name] = number
+    print("Contact added.")
+
+def view_contacts():
+    if not contacts:
+        print("No contacts found.")
+        return
+    for name, number in contacts.items():
+        print(f"{name}: {number}")
+
+def delete_contact(name):
+    if name in contacts:
+        del contacts[name]
+        print("Contact deleted.")
+    else:
+        print("Contact not found.")
+
+while True:
+    print("\n1. Add  2. View  3. Delete  4. Exit")
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        name = input("Name: ")
+        number = input("Number: ")
+        add_contact(name, number)
+
+    elif choice == "2":
+        view_contacts()
+
+    elif choice == "3":
+        delete_contact(input("Name to delete: "))
+
+    elif choice == "4":
+        break
+
+    else:
+        print("Invalid choice")

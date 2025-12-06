@@ -1,0 +1,43 @@
+employees = []
+
+def add_employee():
+    emp = {
+        "id": input("ID: "),
+        "name": input("Name: "),
+        "role": input("Role: "),
+        "salary": int(input("Salary: "))
+    }
+    employees.append(emp)
+    print("Employee added.")
+
+def view_employees():
+    if not employees:
+        print("No employees found.")
+        return
+    for emp in employees:
+        print(emp)
+
+def update_salary(emp_id, new_salary):
+    for emp in employees:
+        if emp["id"] == emp_id:
+            emp["salary"] = new_salary
+            print("Salary updated.")
+            return
+    print("Employee not found.")
+
+while True:
+    print("\n1. Add  2. View  3. Update Salary  4. Exit")
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        add_employee()
+    elif choice == "2":
+        view_employees()
+    elif choice == "3":
+        emp_id = input("Employee ID: ")
+        amount = int(input("New Salary: "))
+        update_salary(emp_id, amount)
+    elif choice == "4":
+        break
+    else:
+        print("Invalid choice")

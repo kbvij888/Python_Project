@@ -1,0 +1,40 @@
+class NotesManager:
+    def __init__(self):
+        self.notes = []   # store notes in a list
+
+    def add_note(self, text):
+        self.notes.append(text)
+        print("Note added.")
+
+    def view_notes(self):
+        if not self.notes:
+            print("No notes found.")
+            return
+        for note in self.notes:
+            print(note)
+
+    def delete_all(self):
+        self.notes.clear()
+        print("All notes deleted.")
+
+
+nm = NotesManager()
+
+while True:
+    print("\n1. Add  2. View  3. Delete All  4. Exit")
+    ch = input("Choice: ")
+
+    if ch == "1":
+        nm.add_note(input("Write note: "))
+
+    elif ch == "2":
+        nm.view_notes()
+
+    elif ch == "3":
+        nm.delete_all()
+
+    elif ch == "4":
+        break
+
+    else:
+        print("Invalid choice")
